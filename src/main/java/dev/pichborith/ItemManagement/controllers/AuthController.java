@@ -5,10 +5,10 @@ import dev.pichborith.ItemManagement.models.User;
 import dev.pichborith.ItemManagement.models.UserRequest;
 import dev.pichborith.ItemManagement.services.JwtService;
 import dev.pichborith.ItemManagement.services.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -24,6 +24,9 @@ public class AuthController {
     @Autowired
     private JwtService jwtService;
 
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
+
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(
         @RequestBody UserRequest request) {
@@ -38,6 +41,20 @@ public class AuthController {
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@RequestBody UserRequest request) {
+        User user = userService.getUser(request);
+        String token = jwtService.generateToken(user);
+
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+        AuthResponse response = new AuthResponse("Login successful",
+                                                 map);
+
+        return ResponseEntity.accepted().body(response);
+    }
+
 
     @GetMapping("/hello")
     public String hello() {
