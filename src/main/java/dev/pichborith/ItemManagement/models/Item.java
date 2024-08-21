@@ -1,5 +1,6 @@
 package dev.pichborith.ItemManagement.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,8 +25,10 @@ public class Item {
     private BigDecimal price;
 
     @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "item")
     private Set<Inventory> inventories;
 }
