@@ -14,7 +14,6 @@ public class UserMapper {
 
     public User toUser(UserRequest request) {
         String password = passwordEncoder.encode(request.password());
-        System.out.println(password);
         return new User(request.username(), password);
     }
 
