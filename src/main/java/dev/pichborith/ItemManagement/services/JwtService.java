@@ -30,7 +30,7 @@ public class JwtService {
     @Value("${TOKEN_EXPIRATION}")
     private int expiration;
 
-    private UserRepository userRepo;
+    private final UserRepository userRepo;
 
     public String generateToken(User user) {
         Map<String, Object> map = new HashMap<>();
