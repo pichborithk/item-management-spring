@@ -1,6 +1,6 @@
 package dev.pichborith.ItemManagement.repositories;
 
-import dev.pichborith.ItemManagement.models.User;
+import dev.pichborith.ItemManagement.models.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

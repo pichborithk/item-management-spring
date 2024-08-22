@@ -4,10 +4,10 @@ import dev.pichborith.ItemManagement.exception.BadRequestException;
 import dev.pichborith.ItemManagement.exception.ConflictException;
 import dev.pichborith.ItemManagement.exception.InternalException;
 import dev.pichborith.ItemManagement.exception.UnauthorizedException;
-import dev.pichborith.ItemManagement.models.User;
-import dev.pichborith.ItemManagement.models.UserRequest;
+import dev.pichborith.ItemManagement.models.User.User;
+import dev.pichborith.ItemManagement.models.User.UserRequest;
 import dev.pichborith.ItemManagement.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,16 +15,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepo;
-
-    @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepo;
+    private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
     public User createUser(UserRequest request) {
         String username = request.username();

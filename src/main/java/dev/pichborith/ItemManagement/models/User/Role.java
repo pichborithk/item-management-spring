@@ -1,4 +1,4 @@
-package dev.pichborith.ItemManagement.models;
+package dev.pichborith.ItemManagement.models.User;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static dev.pichborith.ItemManagement.models.Permission.*;
+import static dev.pichborith.ItemManagement.models.User.Permission.*;
 
 @Getter
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package dev.pichborith.ItemManagement.models;
+package dev.pichborith.ItemManagement.models.User;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

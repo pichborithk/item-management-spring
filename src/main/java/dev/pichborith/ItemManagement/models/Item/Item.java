@@ -1,5 +1,7 @@
-package dev.pichborith.ItemManagement.models;
+package dev.pichborith.ItemManagement.models.Item;
 
+import dev.pichborith.ItemManagement.models.Category;
+import dev.pichborith.ItemManagement.models.Inventory;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,10 +25,10 @@ public class Item {
 
     private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
     private Set<Inventory> inventories;
 }

@@ -1,7 +1,7 @@
 package dev.pichborith.ItemManagement.services;
 
 import dev.pichborith.ItemManagement.exception.UnauthorizedException;
-import dev.pichborith.ItemManagement.models.User;
+import dev.pichborith.ItemManagement.models.User.User;
 import dev.pichborith.ItemManagement.repositories.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
