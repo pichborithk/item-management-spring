@@ -1,8 +1,8 @@
 package dev.pichborith.ItemManagement.controllers;
 
 import dev.pichborith.ItemManagement.models.AuthResponse;
-import dev.pichborith.ItemManagement.models.User;
-import dev.pichborith.ItemManagement.models.UserRequest;
+import dev.pichborith.ItemManagement.models.User.User;
+import dev.pichborith.ItemManagement.models.User.UserRequest;
 import dev.pichborith.ItemManagement.services.JwtService;
 import dev.pichborith.ItemManagement.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
