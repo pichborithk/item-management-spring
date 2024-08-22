@@ -2,6 +2,7 @@ package dev.pichborith.ItemManagement.services;
 
 import dev.pichborith.ItemManagement.models.location.Location;
 import dev.pichborith.ItemManagement.models.location.LocationInventory;
+import dev.pichborith.ItemManagement.models.location.LocationRequest;
 import dev.pichborith.ItemManagement.models.location.LocationResponse;
 import dev.pichborith.ItemManagement.repositories.InventoryRepository;
 import dev.pichborith.ItemManagement.repositories.LocationRepository;
@@ -32,5 +33,10 @@ public class LocationService {
         }
 
         return locationResponses;
+    }
+
+    public LocationResponse add(LocationRequest request) {
+        Location location = locationRepository.save(locationMapper.toLocation(request));
+        return locationMapper.toLocationResponse(location, new ArrayList<>());
     }
 }

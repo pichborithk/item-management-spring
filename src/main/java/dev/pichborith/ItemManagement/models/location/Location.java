@@ -23,4 +23,9 @@ public class Location {
 
     @OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
     private Set<Inventory> inventories;
+
+    public Location(int id, String type) {
+        this.id = id;
+        this.type = type;
+    }
 }
