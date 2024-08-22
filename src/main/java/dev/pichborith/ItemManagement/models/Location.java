@@ -18,10 +18,8 @@ public class Location {
     private int id;
 
     @Column(nullable = false)
-    private String name;
+    private String type;
 
-    private String description;
-
-    @OneToMany(mappedBy = "location")
+    @OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
     private Set<Inventory> inventories;
 }
