@@ -11,9 +11,9 @@ import java.util.List;
 public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
 
     @Query(value = """
-        SELECT l.location_id AS location_id, l.type AS type, inv.quantity AS quantity 
-        FROM inventories AS inv 
-        JOIN locations AS l ON inv.location_id = l.location_id 
+        SELECT l.location_id AS location_id, l.type AS type, inv.quantity AS quantity
+        FROM inventories AS inv
+        JOIN locations AS l ON inv.location_id = l.location_id
         WHERE inv.item_id= ?
         """, nativeQuery = true)
     List<ItemInventory> findAllByItemId(int itemId);
