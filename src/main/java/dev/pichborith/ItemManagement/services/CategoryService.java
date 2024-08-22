@@ -1,6 +1,7 @@
 package dev.pichborith.ItemManagement.services;
 
 import dev.pichborith.ItemManagement.models.category.Category;
+import dev.pichborith.ItemManagement.models.category.CategoryRequest;
 import dev.pichborith.ItemManagement.models.category.CategoryResponse;
 import dev.pichborith.ItemManagement.repositories.CategoryRepository;
 import dev.pichborith.ItemManagement.repositories.ItemRepository;
@@ -20,13 +21,20 @@ public class CategoryService {
 
     public List<CategoryResponse> getAll() {
         List<Category> categories = categoryRepository.findAll();
-        List<CategoryResponse> categoryResponses = new ArrayList<>();
+        List<CategoryResponse> response = new ArrayList<>();
 
         for (var category : categories) {
             var items = itemRepository.findAllByCategoryId(category.getId());
-            var categoryResponse = categoryMapper.toCategoryResponse(category, items);
-            categoryResponses.add(categoryResponse);
+            var categoryResponse = categoryMapper.toCategoryResponse(category,
+                                                                     items);
+            response.add(categoryResponse);
         }
-        return categoryResponses;
+        return response;
+    }
+
+    public CategoryResponse add(CategoryRequest request) {
+        var category = categoryRepository.save(categoryMapper
+                                                   .toCategory(request));
+        return categoryMapper.toCategoryResponse(category);
     }
 }

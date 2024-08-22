@@ -24,4 +24,8 @@ public class Category {
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private Set<Item> items;
 
+    public Category(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

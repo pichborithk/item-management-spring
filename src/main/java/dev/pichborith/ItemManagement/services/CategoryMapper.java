@@ -2,6 +2,7 @@ package dev.pichborith.ItemManagement.services;
 
 import dev.pichborith.ItemManagement.models.category.Category;
 import dev.pichborith.ItemManagement.models.category.CategoryItem;
+import dev.pichborith.ItemManagement.models.category.CategoryRequest;
 import dev.pichborith.ItemManagement.models.category.CategoryResponse;
 import dev.pichborith.ItemManagement.models.item.Item;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,13 @@ public class CategoryMapper {
         }
         return new CategoryResponse(category.getId(), category.getName(),
                                     categoryItems);
+    }
+
+    public CategoryResponse toCategoryResponse(Category category) {
+        return toCategoryResponse(category, new ArrayList<>());
+    }
+
+    public Category toCategory(CategoryRequest request) {
+        return new Category(request.id(), request.name());
     }
 }
