@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +37,7 @@ public class ItemService {
 
     public ItemResponse getById(int itemId) {
         Item item = itemRepository.findByIdAllWithCategory(itemId);
-        Set<InventoryDTO> inventories = inventoryRepository.findAllByItemId(
+        List<InventoryDTO> inventories = inventoryRepository.findAllByItemId(
             itemId);
 
         return itemMapper.toItemResponse(item, inventories);

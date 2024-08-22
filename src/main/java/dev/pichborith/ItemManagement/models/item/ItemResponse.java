@@ -1,13 +1,13 @@
 package dev.pichborith.ItemManagement.models.item;
 
 import java.math.BigDecimal;
-import java.util.Set;
+import java.util.List;
 
 public record ItemResponse (
     int id,
     String name,
     BigDecimal price,
     String category,
-    Set<InventoryDTO> inventories
+    List<InventoryDTO> inventories
 ){
 }
