@@ -1,6 +1,6 @@
 package dev.pichborith.ItemManagement.services;
 
-import dev.pichborith.ItemManagement.models.item.InventoryDTO;
+import dev.pichborith.ItemManagement.models.item.ItemInventory;
 import dev.pichborith.ItemManagement.models.item.Item;
 import dev.pichborith.ItemManagement.models.item.ItemResponse;
 import dev.pichborith.ItemManagement.repositories.InventoryRepository;
@@ -37,7 +37,7 @@ public class ItemService {
 
     public ItemResponse getById(int itemId) {
         Item item = itemRepository.findByIdAllWithCategory(itemId);
-        List<InventoryDTO> inventories = inventoryRepository.findAllByItemId(
+        List<ItemInventory> inventories = inventoryRepository.findAllByItemId(
             itemId);
 
         return itemMapper.toItemResponse(item, inventories);

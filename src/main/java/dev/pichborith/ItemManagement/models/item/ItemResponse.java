@@ -8,6 +8,6 @@ public record ItemResponse (
     String name,
     BigDecimal price,
     String category,
-    List<InventoryDTO> inventories
+    List<ItemInventory> inventories
 ){
 }
