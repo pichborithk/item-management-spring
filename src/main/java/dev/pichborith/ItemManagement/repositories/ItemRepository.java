@@ -14,4 +14,5 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     @Query("SELECT i FROM Item i JOIN FETCH i.category WHERE i.id = ?1")
     Item findByIdAllWithCategory(int itemId);
 
+    List<Item> findAllByCategoryId(int categoryId);
 }
