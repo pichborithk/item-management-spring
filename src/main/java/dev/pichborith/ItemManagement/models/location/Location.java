@@ -1,5 +1,6 @@
-package dev.pichborith.ItemManagement.models;
+package dev.pichborith.ItemManagement.models.location;
 
+import dev.pichborith.ItemManagement.models.Inventory;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

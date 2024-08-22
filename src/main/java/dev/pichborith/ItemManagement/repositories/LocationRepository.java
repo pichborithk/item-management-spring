@@ -1,6 +1,6 @@
 package dev.pichborith.ItemManagement.repositories;
 
-import dev.pichborith.ItemManagement.models.Location;
+import dev.pichborith.ItemManagement.models.location.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LocationRepository extends JpaRepository<Location, Integer> {
