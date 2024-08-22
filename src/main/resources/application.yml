@@ -18,7 +18,7 @@ spring:
     properties:
       hibernate:
         default_schema: ${SCHEMA}
-    show-sql: true
+#    show-sql: true
 
   sql:
     init:
