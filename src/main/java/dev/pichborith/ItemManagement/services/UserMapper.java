@@ -1,7 +1,7 @@
 package dev.pichborith.ItemManagement.services;
 
-import dev.pichborith.ItemManagement.models.User.User;
-import dev.pichborith.ItemManagement.models.User.UserRequest;
+import dev.pichborith.ItemManagement.models.user.User;
+import dev.pichborith.ItemManagement.models.user.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package dev.pichborith.ItemManagement.services;
 
-import dev.pichborith.ItemManagement.models.Item.InventoryDTO;
-import dev.pichborith.ItemManagement.models.Item.Item;
-import dev.pichborith.ItemManagement.models.Item.ItemResponse;
+import dev.pichborith.ItemManagement.models.item.InventoryDTO;
+import dev.pichborith.ItemManagement.models.item.Item;
+import dev.pichborith.ItemManagement.models.item.ItemResponse;
 import dev.pichborith.ItemManagement.repositories.InventoryRepository;
 import dev.pichborith.ItemManagement.repositories.ItemRepository;
 import lombok.RequiredArgsConstructor;

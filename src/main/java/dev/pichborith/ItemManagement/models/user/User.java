@@ -1,4 +1,4 @@
-package dev.pichborith.ItemManagement.models.User;
+package dev.pichborith.ItemManagement.models.user;
 
 import jakarta.persistence.*;
 import lombok.Data;

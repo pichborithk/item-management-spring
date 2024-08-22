@@ -1,6 +1,6 @@
-package dev.pichborith.ItemManagement.models.Item;
+package dev.pichborith.ItemManagement.models.item;
 
-import dev.pichborith.ItemManagement.models.Category;
+import dev.pichborith.ItemManagement.models.category.Category;
 import dev.pichborith.ItemManagement.models.Inventory;
 import jakarta.persistence.*;
 import lombok.Data;

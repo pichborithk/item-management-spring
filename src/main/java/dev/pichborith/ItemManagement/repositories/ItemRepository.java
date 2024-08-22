@@ -1,6 +1,6 @@
 package dev.pichborith.ItemManagement.repositories;
 
-import dev.pichborith.ItemManagement.models.Item.Item;
+import dev.pichborith.ItemManagement.models.item.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

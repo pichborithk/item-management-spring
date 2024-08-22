@@ -1,6 +1,6 @@
 package dev.pichborith.ItemManagement.controllers;
 
-import dev.pichborith.ItemManagement.models.Item.ItemResponse;
+import dev.pichborith.ItemManagement.models.item.ItemResponse;
 import dev.pichborith.ItemManagement.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

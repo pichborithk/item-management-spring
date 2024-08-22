@@ -1,4 +1,4 @@
-package dev.pichborith.ItemManagement.models.Item;
+package dev.pichborith.ItemManagement.models.item;
 
 import java.math.BigDecimal;
 import java.util.Set;
