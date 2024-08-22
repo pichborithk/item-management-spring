@@ -1,24 +1,27 @@
 package dev.pichborith.ItemManagement.models;
 
+import dev.pichborith.ItemManagement.models.Item.Item;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
 @Data
 @Table(name = "inventories")
-public class Inventory {
+@IdClass(Inventory.class)
+public class Inventory implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "inventory_id")
-    private int id;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id")
     private Item item;
 
-    @ManyToOne
+    @Id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
     private Location location;
 
     @Column(nullable = false)
