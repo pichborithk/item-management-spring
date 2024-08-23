@@ -1,5 +1,6 @@
 package dev.pichborith.ItemManagement.controllers;
 
+import dev.pichborith.ItemManagement.models.location.LocationInventoryRequest;
 import dev.pichborith.ItemManagement.models.location.LocationRequest;
 import dev.pichborith.ItemManagement.models.location.LocationResponse;
 import dev.pichborith.ItemManagement.services.LocationService;
@@ -30,4 +31,13 @@ public class LocationController {
         return new ResponseEntity<>(location, HttpStatus.CREATED);
     }
 
+    @PostMapping("/inventory/{locationId}")
+    public ResponseEntity<LocationResponse> addNewItemToLocationInventory(
+        @PathVariable int locationId,
+        @RequestBody LocationInventoryRequest request) {
+        var location = locationService.addItem(locationId, request);
+
+        return ResponseEntity.accepted().body(location);
+    }
 }
+

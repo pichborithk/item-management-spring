@@ -4,7 +4,9 @@ import dev.pichborith.ItemManagement.models.Inventory;
 import dev.pichborith.ItemManagement.models.item.ItemInventory;
 import dev.pichborith.ItemManagement.models.location.LocationInventory;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,4 +27,14 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
         WHERE inv.location_id = ?
         """, nativeQuery = true)
     List<LocationInventory> findAllByLocationId(int locationId);
+
+    boolean existsByItemIdAndLocationId(int itemId, int locationId);
+
+    @Modifying
+    @Transactional
+    @Query(value = """
+        INSERT INTO inventories (item_id, location_id, quantity)
+        VALUES (:itemId , :locationId, :quantity)
+        """, nativeQuery = true)
+    void addNewItemToLocationInventory(int itemId, int locationId, int quantity);
 }
