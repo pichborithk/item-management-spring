@@ -6,6 +6,7 @@ import dev.pichborith.ItemManagement.models.location.LocationRequest;
 import dev.pichborith.ItemManagement.models.location.LocationResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,6 +15,10 @@ public class LocationMapper {
     public LocationResponse toLocationResponse(Location location, List<LocationInventory> inventories) {
         return new LocationResponse(location.getId(), location.getType(),
                                     inventories);
+    }
+
+    public LocationResponse toLocationResponse(Location location) {
+        return toLocationResponse(location, new ArrayList<>());
     }
 
     public Location toLocation(LocationRequest request) {

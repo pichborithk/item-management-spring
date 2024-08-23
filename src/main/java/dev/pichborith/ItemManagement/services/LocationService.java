@@ -37,6 +37,6 @@ public class LocationService {
 
     public LocationResponse add(LocationRequest request) {
         Location location = locationRepository.save(locationMapper.toLocation(request));
-        return locationMapper.toLocationResponse(location, new ArrayList<>());
+        return locationMapper.toLocationResponse(location);
     }
 }
