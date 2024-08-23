@@ -57,4 +57,30 @@ public class ItemService {
         item.setCategory(category);
         return itemMapper.toItemResponse(itemRepository.save(item));
     }
+
+    public ItemResponse update(int itemId, ItemRequest request) {
+        var item = itemRepository.findByIdAllWithCategory(itemId);
+        if (item == null) {
+            throw new NotFoundException(String.format("Item with ID: %d doesn't exist", itemId));
+        }
+
+        if (request.name() != null) item.setName(request.name());
+        if (request.price() != null) item.setPrice(request.price());
+        if (request.categoryId() != 0) {
+            var category = categoryRepository.findById(request.categoryId())
+                                             .orElseThrow(
+                                                 () -> new NotFoundException(
+                                                     String.format(
+                                                         "Category with ID: %d doesn't exist",
+                                                         request.categoryId())));
+
+            item.setCategory(category);
+        }
+        itemRepository.save(item);
+
+        var inventories = inventoryRepository.findAllByItemId(
+            itemId);
+
+        return itemMapper.toItemResponse(item, inventories);
+    }
 }

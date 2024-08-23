@@ -35,4 +35,12 @@ public class ItemController {
         var item = itemService.add(request);
         return new ResponseEntity<>(item, HttpStatus.CREATED);
     }
+
+    @PatchMapping("/{itemId}")
+    public ResponseEntity<ItemResponse> updateItem(@PathVariable int itemId,
+                                                   @RequestBody ItemRequest request) {
+        System.out.println(request.toString());
+        var item = itemService.update(itemId, request);
+        return ResponseEntity.ok(item);
+    }
 }
