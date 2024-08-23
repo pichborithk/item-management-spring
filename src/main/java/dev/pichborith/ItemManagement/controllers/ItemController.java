@@ -39,8 +39,15 @@ public class ItemController {
     @PatchMapping("/{itemId}")
     public ResponseEntity<ItemResponse> updateItem(@PathVariable int itemId,
                                                    @RequestBody ItemRequest request) {
-        System.out.println(request.toString());
         var item = itemService.update(itemId, request);
         return ResponseEntity.ok(item);
+    }
+
+    @DeleteMapping("/{itemId}")
+    public ResponseEntity<String> deleteItem(@PathVariable int itemId) {
+        itemService.delete(itemId);
+
+        return ResponseEntity.ok(
+            String.format("Item with ID: %d has benn deleted", itemId));
     }
 }

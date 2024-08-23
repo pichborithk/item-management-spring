@@ -83,4 +83,8 @@ public class ItemService {
 
         return itemMapper.toItemResponse(item, inventories);
     }
+
+    public void delete(int itemId) {
+        itemRepository.deleteById(itemId);
+    }
 }
