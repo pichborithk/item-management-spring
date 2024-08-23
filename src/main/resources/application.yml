@@ -12,6 +12,8 @@ spring:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+#    driver-class-name: org.postgresql.Driver
+
 
   jpa:
     open-in-view: false
@@ -19,6 +21,8 @@ spring:
       hibernate:
         default_schema: ${SCHEMA}
 #    show-sql: true
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
 
   sql:
     init:
