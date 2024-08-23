@@ -50,7 +50,7 @@ public class ItemService {
                                          .orElseThrow(
                                              () -> new NotFoundException(
                                                  String.format(
-                                                     "Category with Id: %d doesn't exist",
+                                                     "Category with ID: %d doesn't exist",
                                                      request.categoryId())));
 
         var item = itemMapper.toItem(request);
