@@ -21,7 +21,7 @@ public class Location {
     @Column(nullable = false)
     private String type;
 
-    @OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "location", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Inventory> inventories;
 
     public Location(int id, String type) {

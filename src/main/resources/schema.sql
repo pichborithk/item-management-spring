@@ -34,8 +34,8 @@ CREATE TABLE locations (
 
 
 CREATE TABLE inventories (
-    item_id INTEGER REFERENCES items(item_id),
-    location_id INTEGER REFERENCES locations(location_id),
+    item_id INTEGER REFERENCES items(item_id) ON DELETE CASCADE,
+    location_id INTEGER REFERENCES locations(location_id) ON DELETE CASCADE,
     quantity INTEGER NOT NULL CHECK (quantity >= 0),
     PRIMARY KEY (item_id, location_id)
 );

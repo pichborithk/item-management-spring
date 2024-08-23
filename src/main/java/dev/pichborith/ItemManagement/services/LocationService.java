@@ -103,4 +103,8 @@ public class LocationService {
 
         return locationMapper.toLocationResponse(location, inventories);
     }
+
+    public void delete(int locationId) {
+        locationRepository.deleteById(locationId);
+    }
 }
