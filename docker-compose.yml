@@ -1,0 +1,43 @@
+services:
+  postgres:
+    container_name: item-management-db
+    image: postgres
+    environment:
+      POSTGRES_DB: item-management-spring
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - item-management-app-network
+
+  app:
+    container_name: item-management-spring
+    image: item-management-spring
+    build: ./
+    depends_on:
+      - postgres
+    environment:
+      SERVER_PORT: 1337
+      SCHEMA_NAME: public
+      DB_URL: jdbc:postgresql://postgres:5432/item-management-spring
+      DB_USERNAME: admin
+      DB_PASSWORD: password
+      SECRET_KEY: secret
+      TOKEN_EXPIRATION: 5
+    ports:
+      - "1337:1337"
+    networks:
+      - item-management-app-network
+
+
+volumes:
+  postgres_data:
+
+
+networks:
+  item-management-app-network:
+    driver: bridge
