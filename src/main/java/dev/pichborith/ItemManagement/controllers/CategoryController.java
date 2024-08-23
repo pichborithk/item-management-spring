@@ -19,14 +19,14 @@ public class CategoryController {
 
     @GetMapping
     public ResponseEntity<List<CategoryResponse>> getAllCategories() {
-        var response = categoryService.getAll();
-        return ResponseEntity.ok(response);
+        var categories = categoryService.getAll();
+        return ResponseEntity.ok(categories);
     }
 
     @PostMapping
     public ResponseEntity<CategoryResponse> createCategory(@RequestBody
                                                            CategoryRequest request) {
-        var response = categoryService.add(request);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        var category = categoryService.add(request);
+        return new ResponseEntity<>(category, HttpStatus.CREATED);
     }
 }

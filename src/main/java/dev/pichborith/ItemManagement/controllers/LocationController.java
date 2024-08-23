@@ -19,14 +19,14 @@ public class LocationController {
 
     @GetMapping
     public ResponseEntity<List<LocationResponse>> getAllLocations() {
-        List<LocationResponse> locations = locationService.getAll();
+        var locations = locationService.getAll();
         return ResponseEntity.ok(locations);
     }
 
     @PostMapping
     public ResponseEntity<LocationResponse> createLocation(@RequestBody
                                                            LocationRequest request) {
-        LocationResponse location = locationService.add(request);
+        var location = locationService.add(request);
         return new ResponseEntity<>(location, HttpStatus.CREATED);
     }
 
