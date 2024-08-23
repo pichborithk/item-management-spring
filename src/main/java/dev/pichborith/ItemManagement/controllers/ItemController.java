@@ -1,13 +1,12 @@
 package dev.pichborith.ItemManagement.controllers;
 
+import dev.pichborith.ItemManagement.models.item.ItemRequest;
 import dev.pichborith.ItemManagement.models.item.ItemResponse;
 import dev.pichborith.ItemManagement.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,13 +19,20 @@ public class ItemController {
 
     @GetMapping
     public ResponseEntity<List<ItemResponse>> getAllItems() {
-        List<ItemResponse> items = itemService.getAll();
+        var items = itemService.getAll();
         return ResponseEntity.ok(items);
     }
 
     @GetMapping("/{itemId}")
     public ResponseEntity<ItemResponse> getItemById(@PathVariable int itemId) {
-        ItemResponse item = itemService.getById(itemId);
+        var item = itemService.getById(itemId);
         return ResponseEntity.ok(item);
+    }
+
+    @PostMapping
+    public ResponseEntity<ItemResponse> createItem(
+        @RequestBody ItemRequest request) {
+        var item = itemService.add(request);
+        return new ResponseEntity<>(item, HttpStatus.CREATED);
     }
 }

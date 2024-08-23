@@ -31,4 +31,10 @@ public class Item {
 
     @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
     private Set<Inventory> inventories;
+
+    public Item( int id, String name, BigDecimal price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
 }
