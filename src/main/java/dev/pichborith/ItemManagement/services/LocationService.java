@@ -44,8 +44,8 @@ public class LocationService {
         return locationMapper.toLocationResponse(location);
     }
 
-    public LocationResponse addItem(int locationId,
-                                    LocationInventoryRequest request) {
+    public LocationResponse addItemToInventory(int locationId,
+                                               LocationInventoryRequest request) {
         var location = locationRepository.findById(locationId)
                                          .orElseThrow(
                                              () -> new NotFoundException(
@@ -63,11 +63,40 @@ public class LocationService {
                                                             locationId)) {
             throw new BadRequestException(String.format(
                 "Item with ID: %d already exist in inventory of Location with ID: %d",
-                request.itemId(), locationId));
+                itemId, locationId));
         }
 
-        inventoryRepository.addNewItemToLocationInventory(itemId,
-                                                          locationId,
+        inventoryRepository.addItemToInventory(itemId,
+                                               locationId,
+                                               request.quantity());
+
+        var inventories = inventoryRepository.findAllByLocationId(locationId);
+
+        return locationMapper.toLocationResponse(location, inventories);
+    }
+
+    public LocationResponse updateItemQuantityInInventory(int locationId, LocationInventoryRequest request) {
+        var location = locationRepository.findById(locationId)
+                                         .orElseThrow(
+                                             () -> new NotFoundException(
+                                                 String.format(
+                                                     "Location with ID: %d doesn't exist",
+                                                     locationId)));
+
+        var itemId = request.itemId();
+        itemRepository.findById(request.itemId())
+                      .orElseThrow(() -> new NotFoundException(
+                          String.format("Item with ID: %d doesn't exist",
+                                        itemId)));
+
+        if (!inventoryRepository.existsByItemIdAndLocationId(itemId,
+                                                            locationId)) {
+            throw new BadRequestException(String.format(
+                "Item with ID: %d doesn't exist in inventory of Location with ID: %d",
+                itemId, locationId));
+        }
+
+        inventoryRepository.updateItemQuantityInInventory(itemId, locationId,
                                                           request.quantity());
 
         var inventories = inventoryRepository.findAllByLocationId(locationId);

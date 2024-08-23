@@ -32,10 +32,19 @@ public class LocationController {
     }
 
     @PostMapping("/inventory/{locationId}")
-    public ResponseEntity<LocationResponse> addNewItemToLocationInventory(
+    public ResponseEntity<LocationResponse> addItemToInventory(
         @PathVariable int locationId,
         @RequestBody LocationInventoryRequest request) {
-        var location = locationService.addItem(locationId, request);
+        var location = locationService.addItemToInventory(locationId, request);
+
+        return ResponseEntity.accepted().body(location);
+    }
+
+    @PatchMapping("inventory/{locationId}")
+    public ResponseEntity<LocationResponse> updateItemQuantityInInventory(
+        @PathVariable int locationId,
+        @RequestBody LocationInventoryRequest request) {
+        var location = locationService.updateItemQuantityInInventory(locationId, request);
 
         return ResponseEntity.accepted().body(location);
     }

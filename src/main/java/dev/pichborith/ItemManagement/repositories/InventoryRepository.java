@@ -36,5 +36,13 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
         INSERT INTO inventories (item_id, location_id, quantity)
         VALUES (:itemId , :locationId, :quantity)
         """, nativeQuery = true)
-    void addNewItemToLocationInventory(int itemId, int locationId, int quantity);
+    void addItemToInventory(int itemId, int locationId, int quantity);
+
+    @Modifying
+    @Transactional
+    @Query(value = """
+        UPDATE inventories SET quantity = quantity + :quantity
+        WHERE item_id = :itemId AND location_id = :locationId
+        """, nativeQuery = true)
+    void updateItemQuantityInInventory(int itemId, int locationId, int quantity);
 }
