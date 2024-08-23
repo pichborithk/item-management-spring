@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>dev.pichborith</groupId>
 	<artifactId>ItemManagement</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>ItemManagement</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
