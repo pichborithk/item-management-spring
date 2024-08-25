@@ -22,7 +22,7 @@ services:
       - postgres
     environment:
       SERVER_PORT: 1337
-      SCHEMA_NAME: public
+      DB_SCHEMA: public
       DB_URL: jdbc:postgresql://postgres:5432/item-management-spring
       DB_USERNAME: admin
       DB_PASSWORD: password
