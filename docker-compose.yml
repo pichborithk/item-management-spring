@@ -1,3 +1,22 @@
+# build without Postgres image
+#services:
+#  app:
+#    container_name: item-management-spring
+#    image: item-management-spring
+#    build: ./
+#    environment:
+#      SERVER_PORT: 1337
+#      DB_SCHEMA: public
+#      DB_URL: jdbc:postgresql://host.docker.internal:5432/item-management-spring
+#      DB_USERNAME: pichborith
+#      DB_PASSWORD: password
+#      SECRET_KEY: secret
+#      TOKEN_EXPIRATION: 5
+#    ports:
+#      - "1337:1337"
+
+
+# Build with Postgres and volumes for data
 services:
   postgres:
     container_name: item-management-db
