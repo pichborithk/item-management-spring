@@ -41,6 +41,7 @@ services:
       - postgres
     environment:
       SERVER_PORT: 1337
+      SERVER_ADDRESS: localhost
       DB_SCHEMA: public
       DB_URL: jdbc:postgresql://postgres:5432/item-management-spring
       DB_USERNAME: admin
@@ -60,3 +61,4 @@ volumes:
 networks:
   item-management-app-network:
     driver: bridge
+
