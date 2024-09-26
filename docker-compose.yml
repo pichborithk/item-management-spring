@@ -20,7 +20,7 @@
 services:
   postgres:
     container_name: item-management-db
-    image: postgres
+    image: postgres:15-bullseye
     environment:
       POSTGRES_DB: item-management-spring
       POSTGRES_USER: admin
@@ -40,14 +40,14 @@ services:
     depends_on:
       - postgres
     environment:
-      SERVER_PORT: 1337
-      SERVER_ADDRESS: localhost
+      PORT:
+      ADDRESS:
       DB_SCHEMA: public
       DB_URL: jdbc:postgresql://postgres:5432/item-management-spring
       DB_USERNAME: admin
       DB_PASSWORD: password
-      SECRET_KEY: secret
-      TOKEN_EXPIRATION: 5
+      SECRET_KEY:
+      TOKEN_EXPIRATION:
     ports:
       - "1337:1337"
     networks:
